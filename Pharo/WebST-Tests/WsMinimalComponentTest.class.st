@@ -1,7 +1,6 @@
 Class {
 	#name : 'WsMinimalComponentTest',
 	#superclass : 'WsComponentTest',
-	#classTraits : 'PjTAppRunsInJS classTrait',
 	#category : 'WebST-Tests-Examples',
 	#package : 'WebST-Tests',
 	#tag : 'Examples'
@@ -14,10 +13,10 @@ WsMinimalComponentTest class >> componentClass [
 ]
 
 { #category : 'tests' }
-WsMinimalComponentTest >> assertComponent [
+WsMinimalComponentTest >> testComponentAndShadowRoot [
 
-	self assert: component innerHTML isEmpty.
-	self assert: shadowRoot notNil.
-	self assert: shadowRoot innerHTML isEmpty.
-	self assert: component view identicalTo: shadowRoot
+	self assert: self component innerHTML isEmpty.
+	self assert: self shadowRoot notNil.
+	self assert: self shadowRoot innerHTML isEmpty.
+	self assert: self component view identicalTo: self shadowRoot
 ]

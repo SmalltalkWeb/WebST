@@ -14,13 +14,14 @@ Trait {
 { #category : 'accessing' }
 WsTSingleComponentTest classSide >> appClass [
 
-	^ self appClassGenerator
-		  appFor: self componentClass
-		  attributes: self dataAttributes
-		  style: self componentStyle
+	^ WsComponentAppClassForTest 
+		componentClass: self componentClass;
+		rootComponentAttributes: self dataAttributes;
+		yourself
+"		  style: self componentStyle
 		  cssClasses: self componentCssClasses
 		  appSuperclass: self appSuperclass
-		  traits: self appTraits
+		  traits: self appTraits"
 ]
 
 { #category : 'accessing' }
@@ -77,13 +78,6 @@ WsTSingleComponentTest >> allComponents [
 WsTSingleComponentTest >> component [
 	^component ifNil: [ component := self firstComponent ]
 
-]
-
-{ #category : 'accessing' }
-WsTSingleComponentTest >> component: aComponent [
-
-	component := aComponent.
-	shadowRoot := component at: #shadowRoot 
 ]
 
 { #category : 'accessing' }

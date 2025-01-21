@@ -1,6 +1,6 @@
 Class {
 	#name : 'WsToggleComponentTest',
-	#superclass : 'WsMvcComponentTest',
+	#superclass : 'WsMvcComponentTestOLD',
 	#instVars : [
 		'onView',
 		'offView'

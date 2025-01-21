@@ -1,6 +1,6 @@
 Class {
 	#name : 'WsTextComponentTest',
-	#superclass : 'WsMvcComponentTest',
+	#superclass : 'WsMvcComponentTestOLD',
 	#instVars : [
 		'asserter'
 	],

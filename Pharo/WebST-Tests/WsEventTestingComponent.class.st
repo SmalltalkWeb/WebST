@@ -6,9 +6,9 @@ Class {
 	#instVars : [
 		'isConnectionToDomCaptured'
 	],
-	#category : 'WebST-Tests-Support',
+	#category : 'WebST-Tests-SupportOLD',
 	#package : 'WebST-Tests',
-	#tag : 'Support'
+	#tag : 'SupportOLD'
 }
 
 { #category : 'initialization' }

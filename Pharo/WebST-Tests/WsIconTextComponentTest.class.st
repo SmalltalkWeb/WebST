@@ -1,6 +1,6 @@
 Class {
 	#name : 'WsIconTextComponentTest',
-	#superclass : 'WsComponentTest',
+	#superclass : 'WsComponentTestOLD',
 	#instVars : [
 		'textElement',
 		'iconElement'

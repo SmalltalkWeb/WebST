@@ -1,9 +1,9 @@
 Class {
 	#name : 'WsHtmlElementExtensionTest',
 	#superclass : 'WsMinimalComponentTest',
-	#category : 'WebST-Tests-Support',
+	#category : 'WebST-Tests-SupportOLD',
 	#package : 'WebST-Tests',
-	#tag : 'Support'
+	#tag : 'SupportOLD'
 }
 
 { #category : 'tests' }

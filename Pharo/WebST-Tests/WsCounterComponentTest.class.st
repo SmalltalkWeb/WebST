@@ -1,6 +1,6 @@
 Class {
 	#name : 'WsCounterComponentTest',
-	#superclass : 'WsMvcComponentTest',
+	#superclass : 'WsMvcComponentTestOLD',
 	#instVars : [
 		'counterAsserter'
 	],

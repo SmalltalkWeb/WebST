@@ -1,6 +1,6 @@
 Class {
 	#name : 'WsCompositeComponentInitSubViewTest',
-	#superclass : 'WsComponentTest',
+	#superclass : 'WsComponentTestOLD',
 	#category : 'WebST-Tests-ViewCustomization',
 	#package : 'WebST-Tests',
 	#tag : 'ViewCustomization'

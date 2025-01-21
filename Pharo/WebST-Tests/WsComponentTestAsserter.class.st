@@ -6,9 +6,9 @@ Class {
 		'model',
 		'component'
 	],
-	#category : 'WebST-Tests-Support',
+	#category : 'WebST-Tests-SupportOLD',
 	#package : 'WebST-Tests',
-	#tag : 'Support'
+	#tag : 'SupportOLD'
 }
 
 { #category : 'asserting' }

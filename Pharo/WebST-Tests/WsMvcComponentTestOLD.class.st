@@ -1,22 +1,22 @@
 Class {
-	#name : 'WsMvcComponentTest',
-	#superclass : 'WsComponentTest',
+	#name : 'WsMvcComponentTestOLD',
+	#superclass : 'WsComponentTestOLD',
 	#instVars : [
 		'model'
 	],
-	#category : 'WebST-Tests-Support',
+	#category : 'WebST-Tests-SupportOLD',
 	#package : 'WebST-Tests',
-	#tag : 'Support'
+	#tag : 'SupportOLD'
 }
 
 { #category : 'testing' }
-WsMvcComponentTest class >> isAbstract [
+WsMvcComponentTestOLD class >> isAbstract [
 
-	^ super isAbstract or: [ self == WsMvcComponentTest ]
+	^ super isAbstract or: [ self == WsMvcComponentTestOLD ]
 ]
 
 { #category : 'asserting' }
-WsMvcComponentTest >> assertComponent [
+WsMvcComponentTestOLD >> assertComponent [
 
 	self assertViewModelLink.
 	self replaceModel.
@@ -24,26 +24,26 @@ WsMvcComponentTest >> assertComponent [
 ]
 
 { #category : 'asserting' }
-WsMvcComponentTest >> assertViewModelLink [
+WsMvcComponentTestOLD >> assertViewModelLink [
 
 	self subclassResponsibility
 ]
 
 { #category : 'accessing' }
-WsMvcComponentTest >> component: aComponent [
+WsMvcComponentTestOLD >> component: aComponent [
 
 	super component: aComponent.
 	model := aComponent model
 ]
 
 { #category : 'asserting' }
-WsMvcComponentTest >> newJsModel [
+WsMvcComponentTestOLD >> newJsModel [
 	"Answers a new model created in JS world"
 	^ self jsComponentClass newModel
 ]
 
 { #category : 'asserting' }
-WsMvcComponentTest >> replaceModel [
+WsMvcComponentTestOLD >> replaceModel [
 	"Replace the model of the component in JavaScript using the component class in JS"
 
 	"Ensure all test IVs related to component are updated since replacing the model triggers other changes. See WsMvcComponent>>#model:"
@@ -53,7 +53,7 @@ WsMvcComponentTest >> replaceModel [
 ]
 
 { #category : 'tests' }
-WsMvcComponentTest >> testDynamicComponentCreationWithProvidedModel [
+WsMvcComponentTestOLD >> testDynamicComponentCreationWithProvidedModel [
 
 	| newComponent staticComponent jsModel |
 	jsModel := self newJsModel.

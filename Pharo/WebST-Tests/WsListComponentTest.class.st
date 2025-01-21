@@ -1,6 +1,6 @@
 Class {
 	#name : 'WsListComponentTest',
-	#superclass : 'WsMvcComponentTest',
+	#superclass : 'WsMvcComponentTestOLD',
 	#category : 'WebST-Tests-Library',
 	#package : 'WebST-Tests',
 	#tag : 'Library'

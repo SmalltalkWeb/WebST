@@ -1,13 +1,13 @@
 Class {
 	#name : 'WsCompositeComponentTest',
-	#superclass : 'WsComponentTest',
+	#superclass : 'WsComponentTestOLD',
 	#instVars : [
 		'intermediateComponent',
 		'leafComponent'
 	],
-	#category : 'WebST-Tests-Examples',
+	#category : 'WebST-Tests-ExamplesOLD',
 	#package : 'WebST-Tests',
-	#tag : 'Examples'
+	#tag : 'ExamplesOLD'
 }
 
 { #category : 'accessing' }

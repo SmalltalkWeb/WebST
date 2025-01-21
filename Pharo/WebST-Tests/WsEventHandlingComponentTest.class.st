@@ -1,9 +1,9 @@
 Class {
 	#name : 'WsEventHandlingComponentTest',
-	#superclass : 'WsComponentTest',
-	#category : 'WebST-Tests-Support',
+	#superclass : 'WsComponentTestOLD',
+	#category : 'WebST-Tests-SupportOLD',
 	#package : 'WebST-Tests',
-	#tag : 'Support'
+	#tag : 'SupportOLD'
 }
 
 { #category : 'accessing' }

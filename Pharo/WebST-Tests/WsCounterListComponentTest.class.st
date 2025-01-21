@@ -1,9 +1,9 @@
 Class {
 	#name : 'WsCounterListComponentTest',
 	#superclass : 'WsListComponentTest',
-	#category : 'WebST-Tests-Examples',
+	#category : 'WebST-Tests-ExamplesOLD',
 	#package : 'WebST-Tests',
-	#tag : 'Examples'
+	#tag : 'ExamplesOLD'
 }
 
 { #category : 'accessing' }

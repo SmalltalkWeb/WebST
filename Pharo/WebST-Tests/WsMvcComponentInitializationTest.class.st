@@ -1,14 +1,14 @@
 Class {
 	#name : 'WsMvcComponentInitializationTest',
-	#superclass : 'WsMvcComponentTest',
+	#superclass : 'WsMvcComponentTestOLD',
 	#instVars : [
 		'viewResetCountExpected',
 		'viewInitCountExpected',
 		'modelInitCountExpected'
 	],
-	#category : 'WebST-Tests-Support',
+	#category : 'WebST-Tests-SupportOLD',
 	#package : 'WebST-Tests',
-	#tag : 'Support'
+	#tag : 'SupportOLD'
 }
 
 { #category : 'accessing' }
