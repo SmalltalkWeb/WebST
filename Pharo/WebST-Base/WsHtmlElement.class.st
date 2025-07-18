@@ -96,6 +96,14 @@ WsHtmlElement >> computedZIndex [
 	^ zIndexString asNumber
 ]
 
+{ #category : 'accessing' }
+WsHtmlElement >> cssClassString [
+	"This is a utility method that avoids collisions with Pharo's #className message that answers the name of the actual class of the receiver"
+
+	<javascript: 'return this.className'>
+	
+]
+
 { #category : 'accessing attributes' }
 WsHtmlElement >> dataAttributeAt: jsAttributeName ifAbsent: aBlock [
 
