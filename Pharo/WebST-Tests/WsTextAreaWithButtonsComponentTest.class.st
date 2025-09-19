@@ -33,10 +33,10 @@ WsTextAreaWithButtonsComponentTest >> assertCustomAttributesApplied [
 
 { #category : 'asserting' }
 WsTextAreaWithButtonsComponentTest >> assertDefaultAttributesApplied [
-	self assert: self textArea spellcheck equals: WsTextAreaWithButtonsComponent defaultCheckSpellingAttribute.
+	self assert: self textArea spellcheck asString equals: WsTextAreaWithButtonsComponent defaultCheckSpellingAttribute.
 	self assert: self textArea placeholder equals: WsTextAreaWithButtonsComponent defaultPlaceholderAttribute.
 	self assert: self textArea style height equals: WsTextAreaWithButtonsComponent defaultTextAreaHeightAttribute.
-	self assert: self textArea style resize equals: WsTextAreaWithButtonsComponent defaultResizeDirectionsAttribute.  
+	self assert: self textArea resize equals: WsTextAreaWithButtonsComponent defaultTextAreaResizeDirectionsAttribute.  
 ]
 
 { #category : 'asserting' }
