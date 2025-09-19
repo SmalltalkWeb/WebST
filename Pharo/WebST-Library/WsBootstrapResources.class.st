@@ -4,17 +4,19 @@ Class {
 	#classVars : [
 		'Bootstrap5o0o2',
 		'Bootstrap5o3o3',
-		'BootstrapIcons1o11o3'
+		'Bootstrap5o3o8',
+		'BootstrapIcons1o11o3',
+		'BootstrapIcons1o13o1'
 	],
 	#category : 'WebST-Library-Bootstrap',
 	#package : 'WebST-Library',
 	#tag : 'Bootstrap'
 }
 
-{ #category : 'accesing' }
+{ #category : 'accessing' }
 WsBootstrapResources class >> bootstrap5 [
 
-	^ self bootstrap5o3o3 
+	^ self bootstrap5o3o8
 ]
 
 { #category : 'accesing' }
@@ -29,16 +31,27 @@ WsBootstrapResources class >> bootstrap5o3o3 [
 	^ Bootstrap5o3o3
 ]
 
-{ #category : 'accesing' }
+{ #category : 'accessing' }
+WsBootstrapResources class >> bootstrap5o3o8 [ 
+
+	^ Bootstrap5o3o8 
+]
+
+{ #category : 'accessing' }
 WsBootstrapResources class >> bootstrapIcons1 [
 
-	^ self bootstrapIcons1o11o3
+	^ self bootstrapIcons1o13o1
 	
 ]
 
 { #category : 'accesing' }
 WsBootstrapResources class >> bootstrapIcons1o11o3 [
 	^BootstrapIcons1o11o3
+]
+
+{ #category : 'accessing' }
+WsBootstrapResources class >> bootstrapIcons1o13o1 [
+	^BootstrapIcons1o13o1 
 ]
 
 { #category : 'class initialization' }
@@ -74,6 +87,22 @@ WsBootstrapResources class >> initBootstrap5o3o3 [
 ]
 
 { #category : 'class initialization' }
+WsBootstrapResources class >> initBootstrap5o3o8 [
+
+	Bootstrap5o3o8 := WsCompositeResource withAll: {
+			                  (WsCssLink
+				                   fixedPathString:
+				                   'https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css'
+				                   integrity:
+				                   'sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB').
+			                  (WsJsScript
+				                   fixedPathString:
+				                   'https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js'
+				                   integrity:
+				                   'sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI') }
+]
+
+{ #category : 'class initialization' }
 WsBootstrapResources class >> initBootstrapIcons1o11o3 [
 
 	BootstrapIcons1o11o3 := WsCssLink fixedPathString:
@@ -81,9 +110,18 @@ WsBootstrapResources class >> initBootstrapIcons1o11o3 [
 ]
 
 { #category : 'class initialization' }
+WsBootstrapResources class >> initBootstrapIcons1o13o1 [
+
+	BootstrapIcons1o13o1 := WsCssLink fixedPathString:
+		'https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css'
+]
+
+{ #category : 'class initialization' }
 WsBootstrapResources class >> initialize [
 
-	self initBootstrap5o3o3.
 	self initBootstrap5o0o2.
-	self initBootstrapIcons1o11o3
+	self initBootstrap5o3o3.
+	self initBootstrap5o3o8.
+	self initBootstrapIcons1o11o3.
+	self initBootstrapIcons1o13o1.
 ]
