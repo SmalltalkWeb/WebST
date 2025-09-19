@@ -7,9 +7,9 @@ Class {
 		'playground',
 		'appClass'
 	],
-	#category : 'WebST-Tests-Support',
+	#category : 'WebST-Tests-Tools',
 	#package : 'WebST-Tests',
-	#tag : 'Support'
+	#tag : 'Tools'
 }
 
 { #category : 'tests' }

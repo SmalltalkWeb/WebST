@@ -9,9 +9,9 @@ Class {
 		'variableB',
 		'isSubconditionTrue'
 	],
-	#category : 'WebST-Tests-Support',
+	#category : 'WebST-Tests-Lifecycle',
 	#package : 'WebST-Tests',
-	#tag : 'Support'
+	#tag : 'Lifecycle'
 }
 
 { #category : 'tests' }
