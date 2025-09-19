@@ -14,6 +14,6 @@ WsTextAreaWithButtonsView >> renderOuterHtmlOn: html [
 		with: [
 			html textArea class: 'form-control textInput'.
 			html div
-				class: 'd-flex justify-content-end p-2 column-gap-1';
+				class: 'd-flex justify-content-end p-2 column-gap-2';
 				with: [ html render: WsSaveCancelButtonsView  ]]
 ]

@@ -1,8 +1,8 @@
 Class {
 	#name : 'WsTextAreaWithButtonsComponentTest',
 	#superclass : 'WsMvcComponentTest',
-	#traits : 'WsTKeyboardEventsGenerator + WsTMouseEventsGenerator',
-	#classTraits : 'WsTKeyboardEventsGenerator classTrait + WsTMouseEventsGenerator classTrait',
+	#traits : 'WsTKeyboardEventsGenerator',
+	#classTraits : 'WsTKeyboardEventsGenerator classTrait',
 	#category : 'WebST-Tests-Library',
 	#package : 'WebST-Tests',
 	#tag : 'Library'
@@ -16,41 +16,45 @@ WsTextAreaWithButtonsComponentTest class >> componentClass [
 { #category : 'accessing' }
 WsTextAreaWithButtonsComponentTest class >> dataAttributes [
 
-	^ { #checkSpelling -> false.
+	^ { 
+	#checkSpelling -> false asString.
 	#resizeDirections -> 'none'.
-	#textHeight -> '640px'.
+	#textAreaHeight -> '640px'.
 	#placeholder -> 'I do not care what type here!' }
 ]
 
 { #category : 'asserting' }
 WsTextAreaWithButtonsComponentTest >> assertCustomAttributesApplied [
-	self assert: self textArea spellcheck equalsDataAttributeAt: #checkSpelling.
+	self assert: self textArea spellcheck asString equalsDataAttributeAt: #checkSpelling.
 	self assert: self textArea placeholder equalsDataAttributeAt: #placeholder.
-	self assert: self textArea style height equalsDataAttributeAt: #height.
-	self assert: self textArea style resize equalsDataAttributeAt: #resizeDirections.  
+	self assert: self textArea style height equalsDataAttributeAt: #textAreaHeight.
+	self assert: self textArea resize equalsDataAttributeAt: #resizeDirections.  
 ]
 
 { #category : 'asserting' }
 WsTextAreaWithButtonsComponentTest >> assertDefaultAttributesApplied [
-	self assert: self textArea spellcheck equals: WsTextAreaWithButtonsComponent defaultSpellcheckAttribute.
+	self assert: self textArea spellcheck equals: WsTextAreaWithButtonsComponent defaultCheckSpellingAttribute.
 	self assert: self textArea placeholder equals: WsTextAreaWithButtonsComponent defaultPlaceholderAttribute.
-	self assert: self textArea style height equals: WsTextAreaWithButtonsComponent defaultHeightAttribute.
+	self assert: self textArea style height equals: WsTextAreaWithButtonsComponent defaultTextAreaHeightAttribute.
 	self assert: self textArea style resize equals: WsTextAreaWithButtonsComponent defaultResizeDirectionsAttribute.  
 ]
 
 { #category : 'asserting' }
 WsTextAreaWithButtonsComponentTest >> assertViewModelLink [
-	
+
 	| savedString |
-	{'some string to save'. 'multi-line string\nto save too'  } do: [: providedString |
-	self typeString: providedString in: self textArea.
-	self clickElement: self saveButton.
-	self assert: self savedText equals: providedString].
+	{ 'some string to save'. 'multi-line string\nto save too' } do: [
+		:providedString |
+		self textArea value: ''.
+		self typeString: providedString in: self textArea.
+		self saveButton click.
+		self assert: self savedText equals: providedString ].
 	savedString := self savedText.
-	self typeString: 'another string that will be cancelled' in: self textArea.
-	self clickElement: self cancelButton.
-	self assert: self savedText equals: savedString.
-		
+	self
+		typeString: 'another string that will be cancelled'
+		in: self textArea.
+	self cancelButton click.
+	self assert: self savedText equals: savedString
 ]
 
 { #category : 'accessing' }

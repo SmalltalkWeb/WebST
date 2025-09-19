@@ -123,6 +123,11 @@ WsTextFieldWithButtonsComponent >> savedText [
 	^self model text
 ]
 
+{ #category : 'accessing' }
+WsTextFieldWithButtonsComponent >> textInput [
+	^input
+]
+
 { #category : 'actions' }
 WsTextFieldWithButtonsComponent >> updateModelText [
 
@@ -132,5 +137,5 @@ WsTextFieldWithButtonsComponent >> updateModelText [
 { #category : 'actions' }
 WsTextFieldWithButtonsComponent >> updatePlaceholder [
 
-	input placeholder: self placeholderAttribute 
+	self textInput placeholder: self placeholderAttribute 
 ]
