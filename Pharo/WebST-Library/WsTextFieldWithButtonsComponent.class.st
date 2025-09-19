@@ -14,6 +14,11 @@ Class {
 }
 
 { #category : 'accessing' }
+WsTextFieldWithButtonsComponent class >> defaultPlaceholderAttribute [
+	^'...'
+]
+
+{ #category : 'accessing' }
 WsTextFieldWithButtonsComponent class >> modelClass [
 
 	^WsTextModel 
@@ -51,6 +56,11 @@ WsTextFieldWithButtonsComponent >> cancelBlock: anObject [
 	cancelBlock := anObject
 ]
 
+{ #category : 'accessing' }
+WsTextFieldWithButtonsComponent >> defaultPlaceholderAttribute [
+	^self class defaultPlaceholderAttribute
+]
+
 { #category : 'actions' }
 WsTextFieldWithButtonsComponent >> displayModelText [
 
@@ -69,6 +79,7 @@ WsTextFieldWithButtonsComponent >> getReady [
 	| cancelButton saveButton |
 	super getReady.
 	input := view querySelector: '.textInput'.
+	self updatePlaceholder.
 	cancelButton := view querySelector: '.cancelButton'.
 	self onClickElement: cancelButton do: [ self cancel ].
 	saveButton := view querySelector: '.saveButton'.
@@ -80,6 +91,11 @@ WsTextFieldWithButtonsComponent >> getReady [
 { #category : 'accessing' }
 WsTextFieldWithButtonsComponent >> inputValue [
 	^input value
+]
+
+{ #category : 'accessing' }
+WsTextFieldWithButtonsComponent >> placeholderAttribute [
+	^self dataAttributeAt: #placeholder ifAbsent: [ self defaultPlaceholderAttribute]
 ]
 
 { #category : 'actions' }
@@ -111,4 +127,10 @@ WsTextFieldWithButtonsComponent >> savedText [
 WsTextFieldWithButtonsComponent >> updateModelText [
 
 	model text: input value
+]
+
+{ #category : 'actions' }
+WsTextFieldWithButtonsComponent >> updatePlaceholder [
+
+	input placeholder: self placeholderAttribute 
 ]

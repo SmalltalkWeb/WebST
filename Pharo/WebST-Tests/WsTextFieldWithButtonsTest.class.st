@@ -1,9 +1,6 @@
 Class {
 	#name : 'WsTextFieldWithButtonsTest',
 	#superclass : 'WsMvcComponentTest',
-	#instVars : [
-		'textDisplay'
-	],
 	#category : 'WebST-Tests-Examples',
 	#package : 'WebST-Tests',
 	#tag : 'Examples'
@@ -13,6 +10,23 @@ Class {
 WsTextFieldWithButtonsTest class >> componentClass [
 
 	^ WsTextFieldWithButtonsComponent 
+]
+
+{ #category : 'accessing' }
+WsTextFieldWithButtonsTest class >> dataAttributes [
+
+	^ { #placeholder -> 'Random text does not matter!' }
+]
+
+{ #category : 'asserting' }
+WsTextFieldWithButtonsTest >> assertCustomAttributesApplied [
+	self assert: self textDisplay placeholder equalsDataAttributeAt: #placeholder
+]
+
+{ #category : 'asserting' }
+WsTextFieldWithButtonsTest >> assertDefaultAttributesApplied [
+	self assert: self textDisplay placeholder equals: WsTextFieldWithButtonsComponent defaultPlaceholderAttribute.
+
 ]
 
 { #category : 'asserting' }
@@ -50,4 +64,9 @@ WsTextFieldWithButtonsTest >> cancelButton [
 WsTextFieldWithButtonsTest >> saveButton [
 
 	^ shadowRoot querySelector: '.saveButton'
+]
+
+{ #category : 'accessing' }
+WsTextFieldWithButtonsTest >> textDisplay [ 
+	^self component viewFirstElementByCssClass: #textInput
 ]

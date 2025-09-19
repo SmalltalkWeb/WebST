@@ -13,7 +13,6 @@ WsTextFieldWithButtonsView >> renderOuterHtmlOn: html [
 		class: 'input-group';
 		with: [
 			html textInput
-				class: 'form-control textInput';
-				placeholder: 'Your text here'.
+				class: 'form-control textInput'.
 			html render: WsSaveCancelButtonsView ]
 ]
