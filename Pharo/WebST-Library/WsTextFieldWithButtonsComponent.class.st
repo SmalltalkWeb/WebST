@@ -102,6 +102,11 @@ WsTextFieldWithButtonsComponent >> saveBlock: anObject [
 	saveBlock := anObject
 ]
 
+{ #category : 'accessing' }
+WsTextFieldWithButtonsComponent >> savedText [
+	^self model text
+]
+
 { #category : 'actions' }
 WsTextFieldWithButtonsComponent >> updateModelText [
 
