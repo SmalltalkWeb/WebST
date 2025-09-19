@@ -54,12 +54,18 @@ WsTextAreaWithButtonsComponentTest >> assertViewModelLink [
 		typeString: 'another string that will be cancelled'
 		in: self textArea.
 	self cancelButton click.
-	self assert: self savedText equals: savedString
+	self assert: self savedText equals: savedString.
+	self assert: self displayedText equals: savedString
 ]
 
 { #category : 'accessing' }
 WsTextAreaWithButtonsComponentTest >> cancelButton [ 
 	^self component viewFirstElementByCssClass: #cancelButton
+]
+
+{ #category : 'accessing' }
+WsTextAreaWithButtonsComponentTest >> displayedText [
+	^self textArea value
 ]
 
 { #category : 'accessing' }
