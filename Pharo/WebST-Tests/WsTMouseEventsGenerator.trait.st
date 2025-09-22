@@ -118,6 +118,22 @@ WsTMouseEventsGenerator >> mouseDownElement: domElement shift: aBoolean [
 	domElement dispatchEvent: event
 ]
 
+{ #category : 'clicking' }
+WsTMouseEventsGenerator >> mouseUpElement: domElement [ 
+	^self mouseUpElement: domElement at: 0@0
+]
+
+{ #category : 'clicking' }
+WsTMouseEventsGenerator >> mouseUpElement: domElement at: aPoint [
+
+	| event |
+	event := self newEvent: #mouseup.
+	event
+		instVarNamed: #clientX put: aPoint x;
+		instVarNamed: #clientY put: aPoint y.
+	domElement dispatchEvent: event
+]
+
 { #category : 'dragging' }
 WsTMouseEventsGenerator >> newDragOverEvent [
 

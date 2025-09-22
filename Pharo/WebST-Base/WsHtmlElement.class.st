@@ -112,6 +112,14 @@ WsHtmlElement >> dataAttributeAt: jsAttributeName ifAbsent: aBlock [
 	^ self dataset at: jsAttributeName ifAbsent: aBlock
 ]
 
+{ #category : 'accessing attributes' }
+WsHtmlElement >> dataAttributeAt: jsAttributeName put: newValue [
+	"Read attributes defined in html. JS attribute name is camel case.
+	https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/dataset"
+
+	^ self dataset at: jsAttributeName put: newValue
+]
+
 { #category : 'accessing size' }
 WsHtmlElement >> defaultHeight [
 
