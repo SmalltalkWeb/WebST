@@ -133,6 +133,12 @@ WsTextFieldWithButtonsComponent >> savedText [
 ]
 
 { #category : 'accessing' }
+WsTextFieldWithButtonsComponent >> text: aString [
+
+	self model text: aString
+]
+
+{ #category : 'accessing' }
 WsTextFieldWithButtonsComponent >> textInput [
 	^input
 ]

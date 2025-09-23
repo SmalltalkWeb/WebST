@@ -32,7 +32,7 @@ WsTextFieldWithButtonsTest >> assertDefaultAttributesApplied [
 { #category : 'asserting' }
 WsTextFieldWithButtonsTest >> assertViewModelLink [
 
-	| newText1 newText2 input newText3 |
+	| newText1 newText2 input newText3 newText4 |
 	input := component input.
 	self assert: input value equals: model text.
 	newText1 := 'new text'.
@@ -52,7 +52,10 @@ WsTextFieldWithButtonsTest >> assertViewModelLink [
 	newText3 := 'new replacement text for change model test'.
 	model text: newText3.
 	self assert: input value equals: newText3.
-	
+	newText4 := 'Some string sent directly to the component'.
+	component text: newText4.
+	self assert: model text equals: newText4.
+	self assert: input value equals: newText4
 ]
 
 { #category : 'asserting' }
