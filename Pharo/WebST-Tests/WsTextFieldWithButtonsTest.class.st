@@ -1,9 +1,9 @@
 Class {
 	#name : 'WsTextFieldWithButtonsTest',
 	#superclass : 'WsMvcComponentTest',
-	#category : 'WebST-Tests-Examples',
+	#category : 'WebST-Tests-Library',
 	#package : 'WebST-Tests',
-	#tag : 'Examples'
+	#tag : 'Library'
 }
 
 { #category : 'accessing' }

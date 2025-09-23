@@ -56,6 +56,12 @@ WsTextFieldWithButtonsComponent >> cancelBlock: anObject [
 	cancelBlock := anObject
 ]
 
+{ #category : 'initialization' }
+WsTextFieldWithButtonsComponent >> cancelButton [
+
+	^ self viewFirstElementByCssClass: 'cancelButton'
+]
+
 { #category : 'accessing' }
 WsTextFieldWithButtonsComponent >> defaultPlaceholderAttribute [
 	^self class defaultPlaceholderAttribute
@@ -76,14 +82,11 @@ WsTextFieldWithButtonsComponent >> displayText: aString [
 { #category : 'initialization' }
 WsTextFieldWithButtonsComponent >> getReady [
 
-	| cancelButton saveButton |
 	super getReady.
-	input := view querySelector: '.textInput'.
+	input := self viewFirstElementByCssClass: 'textInput'.
 	self updatePlaceholder.
-	cancelButton := view querySelector: '.cancelButton'.
-	self onClickElement: cancelButton do: [ self cancel ].
-	saveButton := view querySelector: '.saveButton'.
-	self onClickElement: saveButton do: [ self save ].
+	self onClickElement: self cancelButton do: [ self cancel ].
+	self onClickElement: self saveButton do: [ self save ].
 	model -@ #textPort => [ :newText | self displayText: newText ].
 	self displayModelText
 ]
@@ -116,6 +119,12 @@ WsTextFieldWithButtonsComponent >> saveBlock [
 WsTextFieldWithButtonsComponent >> saveBlock: anObject [
 
 	saveBlock := anObject
+]
+
+{ #category : 'initialization' }
+WsTextFieldWithButtonsComponent >> saveButton [
+
+	^ self viewFirstElementByCssClass: 'saveButton'
 ]
 
 { #category : 'accessing' }
