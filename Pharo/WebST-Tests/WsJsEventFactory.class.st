@@ -23,6 +23,18 @@ WsJsEventFactory class >> newEvent: eventType [
 	^self default newEvent: eventType
 ]
 
+{ #category : 'event creation' }
+WsJsEventFactory class >> newEvent: eventType optionsSerialized: associationsSerialized [
+
+	^ self default newEvent: eventType optionsSerialized: associationsSerialized
+]
+
+{ #category : 'event creation' }
+WsJsEventFactory class >> newEvent: eventType with: associations [
+
+	^ self default newEvent: eventType  with: associations
+]
+
 { #category : 'default instance' }
 WsJsEventFactory class >> resetDefault [
 
@@ -48,7 +60,18 @@ WsJsEventFactory >> newEvent: eventType [
 ]
 
 { #category : 'tests support' }
+WsJsEventFactory >> newEvent: eventType optionsSerialized: serializedAssociations [
+
+	| associations |
+	associations := PhxJsonReader readFromString: 
+		                serializedAssociations.
+	^ self newEvent: eventType with: associations
+]
+
+{ #category : 'tests support' }
 WsJsEventFactory >> newEvent: eventType with: associations [
 
-	^self eventClass new: eventType with: associations asJsObject 
+	| options |
+	options := associations asJsObject.
+	^ self eventClass new: eventType with: options
 ]

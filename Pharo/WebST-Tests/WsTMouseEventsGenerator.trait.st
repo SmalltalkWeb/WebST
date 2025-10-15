@@ -15,11 +15,11 @@ WsTMouseEventsGenerator >> clickElement: domElement [
 
 { #category : 'clicking' }
 WsTMouseEventsGenerator >> clickElement: domElement at: aPoint [
+
 	| event |
-	event := self newEvent: #click.
-	event 
-		instVarNamed: #clientX put: aPoint x;
-		instVarNamed: #clientY put: aPoint y.
+	event := self newEvent: #click with: {
+			         (#clientX -> aPoint x).
+			         (#clientY -> aPoint y) }.
 	domElement dispatchEvent: event
 ]
 
@@ -54,13 +54,12 @@ WsTMouseEventsGenerator >> drag: draggedView dropOn: targetView clientX: clientX
 { #category : 'dragging' }
 WsTMouseEventsGenerator >> drag: draggedView dropOn: targetView clientX: clientX clientY: clientY shift: isShiftKeyPressed [
 
-	| dropEvent dragEndEvent |
+	| dropEvent dragEndEvent  |
 	self startDragging: draggedView.
 	self dragOver: targetView clientX: clientX clientY: clientY.
-	dropEvent := self newEvent: #drop.
-	dropEvent
-		instVarNamed: #clientX put: clientX;
-		instVarNamed: #clientY put: clientY.
+	dropEvent := self newEvent: #drop with: {
+			             (#clientX -> clientX).
+			             (#clientY -> clientY) }.
 	targetView dispatchEvent: dropEvent.
 	dragEndEvent := self newEvent: #dragend.
 	draggedView dispatchEvent: dragEndEvent
@@ -76,15 +75,11 @@ WsTMouseEventsGenerator >> drag: draggedView dropOn: targetView shift: isShiftKe
 WsTMouseEventsGenerator >> dragOver: dropTarget clientX: clientX clientY: clientY [
 
 	| dragOverEvent dragEnterEvent |
-	dragEnterEvent := self newEvent: #dragenter.
-	dragEnterEvent
-		instVarNamed: #clientX put: clientX;
-		instVarNamed: #clientY put: clientY.
+	dragEnterEvent := self newEvent: #dragenter with: {
+			             (#clientX -> clientX).
+			             (#clientY -> clientY) }.
 	dropTarget dispatchEvent: dragEnterEvent.
-	dragOverEvent := self newDragOverEvent.
-	dragOverEvent
-		instVarNamed: #clientX put: clientX;
-		instVarNamed: #clientY put: clientY.
+	dragOverEvent := self newDragOverEventClientX: clientX clientY: clientY.
 	dropTarget dispatchEvent: dragOverEvent
 ]
 
@@ -93,23 +88,21 @@ WsTMouseEventsGenerator >> eventFactoryClass [
 	^WsJsMouseEventFactory 
 ]
 
-{ #category : 'clicking' }
+{ #category : 'mouse down / up' }
 WsTMouseEventsGenerator >> mouseDownElement: domElement [ 
 	self mouseDownElement: domElement shift: false
 
 ]
 
-{ #category : 'clicking' }
+{ #category : 'mouse down / up' }
 WsTMouseEventsGenerator >> mouseDownElement: domElement at: aPoint [
+
 	| event |
-	event := self newEvent: #mousedown.
-	event 
-		instVarNamed: #clientX put: aPoint x;
-		instVarNamed: #clientY put: aPoint y.
+	event := self newEvent: #mousedown with: {#clientX -> aPoint x. #clientY -> aPoint y}.
 	domElement dispatchEvent: event
 ]
 
-{ #category : 'clicking' }
+{ #category : 'mouse down / up' }
 WsTMouseEventsGenerator >> mouseDownElement: domElement shift: aBoolean [
 
 	| event |
@@ -118,32 +111,51 @@ WsTMouseEventsGenerator >> mouseDownElement: domElement shift: aBoolean [
 	domElement dispatchEvent: event
 ]
 
-{ #category : 'clicking' }
+{ #category : 'mouse down / up' }
+WsTMouseEventsGenerator >> mouseDownThenUpElement: anObject [
+
+	self mouseDownElement: anObject.
+	self mouseUpElement: anObject
+]
+
+{ #category : 'mouse down / up' }
+WsTMouseEventsGenerator >> mouseDownThenUpElement: anObject at: aPoint [
+
+	self mouseDownElement: anObject at: aPoint.
+	self mouseUpElement: anObject at: aPoint
+]
+
+{ #category : 'mouse down / up' }
 WsTMouseEventsGenerator >> mouseUpElement: domElement [ 
 	^self mouseUpElement: domElement at: 0@0
 ]
 
-{ #category : 'clicking' }
+{ #category : 'mouse down / up' }
 WsTMouseEventsGenerator >> mouseUpElement: domElement at: aPoint [
 
 	| event |
-	event := self newEvent: #mouseup.
-	event
-		instVarNamed: #clientX put: aPoint x;
-		instVarNamed: #clientY put: aPoint y.
+	event := self newEvent: #mouseup with: {
+			         (#clientX -> aPoint x).
+			         (#clientY -> aPoint y) }.
 	domElement dispatchEvent: event
 ]
 
 { #category : 'dragging' }
 WsTMouseEventsGenerator >> newDragOverEvent [
 
-	^ self evalBlock: [ WsJsMouseEventFactory dragOver ]
+	^ self eventFactory dragOver
+]
+
+{ #category : 'dragging' }
+WsTMouseEventsGenerator >> newDragOverEventClientX: clientX clientY: clientY [
+
+	^ self eventFactory dragOverClientX: clientX clientY: clientY
 ]
 
 { #category : 'dragging' }
 WsTMouseEventsGenerator >> newDragStartEvent [
 
-	^ self evalBlock: [ WsJsMouseEventFactory dragStart ]
+	^ self eventFactory dragStart
 ]
 
 { #category : 'clicking' }

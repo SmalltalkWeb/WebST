@@ -37,3 +37,16 @@ WsTEventsGenerator >> newEvent: eventType [
 
 	^ self eventFactory newEvent: eventType
 ]
+
+{ #category : 'common' }
+WsTEventsGenerator >> newEvent: eventType with: associations [
+	"This method is evaluated in Smalltalk world while the event factory is a JavaScript object.
+	So, the message is sent through the PharoJS bridge which currently does not support making proxies on Smalltalk objects except blocks.
+	So, we have to maually take care of serializing the associations here"
+	
+	| associationsSerialized |
+	associationsSerialized := associations asPhxJsonString.
+	^ self eventFactory
+		  newEvent: eventType
+		  optionsSerialized: associationsSerialized
+]
