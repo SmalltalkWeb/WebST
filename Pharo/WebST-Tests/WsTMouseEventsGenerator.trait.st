@@ -26,11 +26,14 @@ WsTMouseEventsGenerator >> clickElement: domElement at: aPoint [
 { #category : 'clicking' }
 WsTMouseEventsGenerator >> clickElement: domElement shift: aBoolean [
 
-	| clickEvent |
-	self mouseDownElement: domElement shift: aBoolean.
-	clickEvent := self newEvent: #click.
-	clickEvent instVarNamed: #shiftKey put: aBoolean.
-	domElement dispatchEvent: clickEvent
+	| mouseDownEvent clickEvent mouseUpEvent |
+	mouseDownEvent := self newEvent: #mousedown with: {#shiftKey -> aBoolean. #bubbles -> true}.
+	domElement dispatchEvent: mouseDownEvent.
+	clickEvent := self newEvent: #click with: {#shiftKey -> aBoolean. #bubbles -> true}.
+	domElement dispatchEvent: clickEvent.
+	mouseUpEvent := self newEvent: #mouseup with: {#shiftKey -> aBoolean. #bubbles -> true}.
+	domElement dispatchEvent: mouseUpEvent
+
 ]
 
 { #category : 'clicking' }
@@ -106,8 +109,7 @@ WsTMouseEventsGenerator >> mouseDownElement: domElement at: aPoint [
 WsTMouseEventsGenerator >> mouseDownElement: domElement shift: aBoolean [
 
 	| event |
-	event := self newEvent: #mousedown.
-	event instVarNamed: #shiftKey put: aBoolean.
+	event := self newEvent: #mousedown with: {#shiftKey -> aBoolean}.
 	domElement dispatchEvent: event
 ]
 
