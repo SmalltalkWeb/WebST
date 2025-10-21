@@ -127,6 +127,20 @@ WsTMouseEventsGenerator >> mouseDownThenUpElement: anObject at: aPoint [
 	self mouseUpElement: anObject at: aPoint
 ]
 
+{ #category : 'moving' }
+WsTMouseEventsGenerator >> mouseMoveElement: domElement to: aPoint [
+
+	| event |
+	self dispatchEvent: 'mouseenter' to: domElement.
+	event := self newEvent: 'mousemove' with: {
+			         (#clientX -> aPoint x).
+			         (#clientY -> aPoint y).
+			         (#screenX -> aPoint x).
+			         (#screenY -> aPoint y).
+			         (#bubbles -> true) }.
+	domElement dispatchEvent: event
+]
+
 { #category : 'mouse down / up' }
 WsTMouseEventsGenerator >> mouseUpElement: domElement [ 
 	^self mouseUpElement: domElement at: 0@0
