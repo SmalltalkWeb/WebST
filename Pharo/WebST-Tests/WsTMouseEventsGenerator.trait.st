@@ -128,16 +128,28 @@ WsTMouseEventsGenerator >> mouseDownThenUpElement: anObject at: aPoint [
 ]
 
 { #category : 'moving' }
-WsTMouseEventsGenerator >> mouseMoveElement: domElement to: aPoint [
+WsTMouseEventsGenerator >> mouseMoveElement: domElement clientPoint: aPoint [
+
+	self
+		mouseMoveElement: domElement
+		clientPoint: aPoint
+		layerPoint: aPoint
+]
+
+{ #category : 'moving' }
+WsTMouseEventsGenerator >> mouseMoveElement: domElement clientPoint: clientPoint layerPoint: layerPoint [
 
 	| event |
 	self dispatchEvent: 'mouseenter' to: domElement.
 	event := self newEvent: 'mousemove' with: {
-			         (#clientX -> aPoint x).
-			         (#clientY -> aPoint y).
-			         (#screenX -> aPoint x).
-			         (#screenY -> aPoint y).
+			         (#clientX -> clientPoint x).
+			         (#clientY -> clientPoint y).
+			         (#screenX -> clientPoint x).
+			         (#screenY -> clientPoint y).
 			         (#bubbles -> true) }.
+	event
+		forceInstVarNamed: #layerX put: layerPoint x;
+		forceInstVarNamed: #layerY put: layerPoint y.
 	domElement dispatchEvent: event
 ]
 
