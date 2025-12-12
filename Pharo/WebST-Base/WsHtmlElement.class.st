@@ -28,6 +28,68 @@ WsHtmlElement class >> javascriptName [
 	^ #HTMLElement
 ]
 
+{ #category : 'access bounding box' }
+WsHtmlElement >> boundingBottom [
+
+	^ self boundingBox bottom
+]
+
+{ #category : 'access bounding box' }
+WsHtmlElement >> boundingBox [
+	"The getClientRects() method [1] of the Element interface returns a collection of DOMRect objects [2] that indicate the bounding rectangles for each CSS border box in a client.
+
+Most elements only have one border box each, but a multiline inline-level element (such as a multiline <span> element, by default) has a border box around each line.
+"
+
+	"[1] https://developer.mozilla.org/en-US/docs/Web/API/Element/getClientRects
+	[2] https://developer.mozilla.org/en-US/docs/Web/API/DOMRect"
+
+	^ self getClientRects js_at: 0
+]
+
+{ #category : 'access bounding box' }
+WsHtmlElement >> boundingCenterX [
+
+	^ (self boundingLeft + self boundingRight) / 2
+]
+
+{ #category : 'access bounding box' }
+WsHtmlElement >> boundingCenterY [
+
+	^ (self boundingTop + self boundingBottom) / 2
+]
+
+{ #category : 'access bounding box' }
+WsHtmlElement >> boundingHeight [
+
+	^ self boundingBox height
+]
+
+{ #category : 'access bounding box' }
+WsHtmlElement >> boundingLeft [
+
+	^ self boundingBox left
+]
+
+{ #category : 'access bounding box' }
+WsHtmlElement >> boundingRight [
+
+	^ self boundingBox right
+]
+
+{ #category : 'access bounding box' }
+WsHtmlElement >> boundingTop [
+
+
+	^ self boundingBox top
+]
+
+{ #category : 'access bounding box' }
+WsHtmlElement >> boundingWidth [
+
+	^ self boundingBox width
+]
+
 { #category : 'accessing visibility' }
 WsHtmlElement >> computedDisplayStyle [
 	^self computedStyle display 
