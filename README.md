@@ -17,7 +17,7 @@ To install any of the projects below evaluate the following expression in a Play
 ```Smalltalk
 Metacello new
   baseline: 'WebST';
-  repository: 'github://bouraqadi/WebST:pharoXX';
+  repository: 'github://SmalltalkWeb/WebST:pharoXX';
   load
  ```
 Where XX is your Pharo image version number. Each supported Pharo version has a dedicated branch.
